@@ -10,13 +10,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var app_service_1 = require('./app.service');
+var app_emitter_service_1 = require('./app.emitter.service');
 var AppComponent = (function () {
     function AppComponent(itemService) {
         this.itemService = itemService;
         this.name = 'Angular';
         this.personsListId = 'PERSONS_LIST';
         this.personEditId = 'PERSON_EDIT';
+        this.getTableStructure = 'TABLE_STRUCTURE';
     }
+    AppComponent.prototype.loadTableStructure = function () {
+        app_emitter_service_1.AppEmitterService.get(this.getTableStructure).emit({});
+    };
     AppComponent.prototype.ngOnInit = function () {
     };
     AppComponent.prototype.ngOnChanges = function (changes) {

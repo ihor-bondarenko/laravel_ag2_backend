@@ -18,7 +18,7 @@ var AppService = (function () {
     function AppService(http) {
         this.http = http;
         // private instance variable to hold base url
-        this.commentsUrl = 'http://laravel.local/get-list';
+        this.commentsUrl = 'http://laravel.local:8124/get-table-structure';
     }
     // private commentsUrl = 'http://578f454de2fa491100415d08.mockapi.io/api/Comment';
     // Fetch all existing comments

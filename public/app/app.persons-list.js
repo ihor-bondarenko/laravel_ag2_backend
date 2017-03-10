@@ -37,9 +37,10 @@ var AppPersonsList = (function () {
         app_emitter_service_1.AppEmitterService.get(this.personsListId).emit(item);
     };
     AppPersonsList.prototype.ngOnInit = function () {
-        this.loadList();
-        app_emitter_service_1.AppEmitterService.get(this.personsListId).subscribe(function (item) { console.log(item); });
-        app_emitter_service_1.AppEmitterService.get(this.personEditId).subscribe(function (item) { console.log(item); });
+        var _this = this;
+        //this.loadList();
+        app_emitter_service_1.AppEmitterService.get(this.getTableStructure).subscribe(function (item) { _this.loadList(); });
+        //AppEmitterService.get(this.personEditId).subscribe((item:Item) => {console.log(item);});
     };
     AppPersonsList.prototype.ngOnChanges = function (changes) {
     };
@@ -51,10 +52,14 @@ var AppPersonsList = (function () {
         core_1.Input(), 
         __metadata('design:type', String)
     ], AppPersonsList.prototype, "personEditId", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], AppPersonsList.prototype, "getTableStructure", void 0);
     AppPersonsList = __decorate([
         core_1.Component({
             selector: 'persons-list',
-            template: "\n        <button (click)=\"addNewItem()\">+</button>\n        <ul>\n            <item-box [personsListId]=\"personsListId\" [personEditId]=\"personEditId\" *ngFor=\"let item of items\" [item]=\"item\"></item-box>\n        </ul>\n  ",
+            template: "\n        <ul>\n            <item-box [personsListId]=\"personsListId\" [personEditId]=\"personEditId\" [getTableStructure]=\"getTableStructure\" *ngFor=\"let item of items\" [item]=\"item\"></item-box>\n        </ul>\n  ",
         }), 
         __metadata('design:paramtypes', [app_service_1.AppService, app_uuid_service_1.UUIDService])
     ], AppPersonsList);

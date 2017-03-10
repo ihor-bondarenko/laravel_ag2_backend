@@ -37,10 +37,14 @@ var ItemBox = (function () {
         core_1.Input(), 
         __metadata('design:type', String)
     ], ItemBox.prototype, "personEditId", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], ItemBox.prototype, "getTableStructure", void 0);
     ItemBox = __decorate([
         core_1.Component({
             selector: 'item-box',
-            template: "\n        <li>{{item.id}} - {{item.name}} <button (click)=\"editItem()\">Edit</button></li>\n    ",
+            template: "\n        <li>\n            {{item.id}} - {{item.name}}\n            <ul>\n                <li *ngFor=\"let subitem of item.columns\">\n                    {{ subitem.name }} [{{ subitem.type }}]\n                </li>\n            </ul>\n        </li>\n    ",
         }), 
         __metadata('design:paramtypes', [app_service_1.AppService, app_uuid_service_1.UUIDService])
     ], ItemBox);
